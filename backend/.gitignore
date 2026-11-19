@@ -41,9 +41,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-lambda-deployment.zip
-lambda-package/
-
 # Python / ambiente virtual / cache
 __pycache__/
 *.py[cod]

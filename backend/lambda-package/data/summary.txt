@@ -1,0 +1,14 @@
+I am a Full Stack Web Developer with over 7 years of experience and a growing focus on designing and deploying Artificial Intelligence, Autonomous Agents and Advanced Backend solutions to production.
+
+Throughout my career — notably during my time at Weblife Dev — I specialized in building web applications from the ground up and designing process automations (such as email response systems, lead generation, chatbot management, and social media publishing) using n8n and AI Agents.
+
+Today, I combine this solid development background with my recent specialization in AI Engineering, transforming language models into scalable, production-ready applications integrated with advanced data ecosystems.
+
+Core Stack & Areas of Expertise:
+- AI Engineering & AI Architectures: LangChain, LangGraph, Agentic RAG, MCP Protocol, LLM Fine-tuning & Production Deployment.
+- Backend & Advanced APIs: Python (FastAPI, Django), Node.js, Laravel.
+- Frontend & Databases: React, MySQL, MongoDB.
+- Automations & Agents: Code and No-code with n8n, AI Voice Agents, workflow automation, and business process agent integration.
+- Geospatial / GIS: Solid knowledge of QGIS and ArcGIS, fueling a keen interest in GIS Web Development and integrating geospatial data with Full Stack and AI solutions.
+
+Driven by technical curiosity and continuous learning, I am looking to join multidisciplinary teams where I can apply this unique combination of Web Development, AI, Automation, and Geographic Information Systems to create real impact.

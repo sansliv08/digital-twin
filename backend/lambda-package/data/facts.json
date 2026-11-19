@@ -1,0 +1,21 @@
+{
+  "full_name": "Lara Sans",
+  "name": "SansLiv",
+  "current_role": "Full Stack Web Developer",
+  "location": "Madrid",
+  "email": "santosliv08@gmail.com",
+  "linkedin": "https://www.linkedin.com/in/santosliv08/",
+  "specialties": [
+    "Your specialty 1",
+    "Your specialty 2",
+    "Your specialty 3"
+  ],
+  "years_experience": 10,
+  "education": [
+    {
+      "degree": "Your Degree",
+      "institution": "Your University",
+      "year": "2020"
+    }
+  ]
+}

@@ -8,8 +8,6 @@ from typing import Optional, List, Dict
 import json
 import uuid
 from datetime import datetime
-import boto3
-from botocore.exceptions import ClientError
 from context import prompt
 
 # Load environment variables
@@ -27,20 +25,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Initialize OpenAI client
-client = client = OpenAI(
-        base_url="https://openrouter.ai/api/v1",
-        api_key=os.environ.get("OPENROUTER_API_KEY"),
-    )
+# Initialize OpenAI client (via OpenRouter)
+client = OpenAI(
+    base_url="https://openrouter.ai/api/v1",
+    api_key=os.environ.get("OPENROUTER_API_KEY"),
+)
 
 # Memory storage configuration
-USE_S3 = os.getenv("USE_S3", "false").lower() == "true"
-S3_BUCKET = os.getenv("S3_BUCKET", "")
 MEMORY_DIR = os.getenv("MEMORY_DIR", "/app/memory")
-
-# Initialize S3 client if needed
-if USE_S3:
-    s3_client = boto3.client("s3")
 
 
 # Request/Response models
@@ -62,43 +54,24 @@ class Message(BaseModel):
 
 # Memory management functions
 def get_memory_path(session_id: str) -> str:
-    return f"{session_id}.json"
+    return os.path.join(MEMORY_DIR, f"{session_id}.json")
 
 
 def load_conversation(session_id: str) -> List[Dict]:
-    """Load conversation history from storage"""
-    if USE_S3:
-        try:
-            response = s3_client.get_object(Bucket=S3_BUCKET, Key=get_memory_path(session_id))
-            return json.loads(response["Body"].read().decode("utf-8"))
-        except ClientError as e:
-            if e.response["Error"]["Code"] == "NoSuchKey":
-                return []
-            raise
-    else:
-        # Local file storage
-        file_path = os.path.join(MEMORY_DIR, get_memory_path(session_id))
-        if os.path.exists(file_path):
-            with open(file_path, "r") as f:
-                return json.load(f)
-        return []
+    """Load conversation history from local storage"""
+    file_path = get_memory_path(session_id)
+    if os.path.exists(file_path):
+        with open(file_path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    return []
 
 
 def save_conversation(session_id: str, messages: List[Dict]):
-    """Save conversation history to storage"""
-    if USE_S3:
-        s3_client.put_object(
-            Bucket=S3_BUCKET,
-            Key=get_memory_path(session_id),
-            Body=json.dumps(messages, indent=2),
-            ContentType="application/json",
-        )
-    else:
-        # Local file storage
-        os.makedirs(MEMORY_DIR, exist_ok=True)
-        file_path = os.path.join(MEMORY_DIR, get_memory_path(session_id))
-        with open(file_path, "w") as f:
-            json.dump(messages, f, indent=2)
+    """Save conversation history to local storage"""
+    os.makedirs(MEMORY_DIR, exist_ok=True)
+    file_path = get_memory_path(session_id)
+    with open(file_path, "w", encoding="utf-8") as f:
+        json.dump(messages, f, indent=2, ensure_ascii=False)
 
 
 @app.get("/")
@@ -106,55 +79,44 @@ async def root():
     return {
         "message": "AI Digital Twin API",
         "memory_enabled": True,
-        "storage": "S3" if USE_S3 else "local",
+        "storage": "local",
     }
 
 
 @app.get("/health")
 async def health_check():
-    return {"status": "healthy", "use_s3": USE_S3}
+    return {"status": "healthy"}
 
 
 @app.post("/chat", response_model=ChatResponse)
 async def chat(request: ChatRequest):
     try:
-        # Generate session ID if not provided
         session_id = request.session_id or str(uuid.uuid4())
-
-        # Load conversation history
         conversation = load_conversation(session_id)
 
-        # Build messages for OpenAI
         messages = [{"role": "system", "content": prompt()}]
 
-        # Add conversation history (keep last 10 messages for context window)
+        # Keep last 10 messages for context window
         for msg in conversation[-10:]:
             messages.append({"role": msg["role"], "content": msg["content"]})
 
-        # Add current user message
         messages.append({"role": "user", "content": request.message})
 
-        # Call OpenAI API
         response = client.chat.completions.create(
-            model="gpt-5-nano", 
-            messages=messages
+            model="gpt-5-nano",
+            messages=messages,
         )
 
         assistant_response = response.choices[0].message.content
+        now = datetime.now().isoformat()
 
-        # Update conversation history
         conversation.append(
-            {"role": "user", "content": request.message, "timestamp": datetime.now().isoformat()}
+            {"role": "user", "content": request.message, "timestamp": now}
         )
         conversation.append(
-            {
-                "role": "assistant",
-                "content": assistant_response,
-                "timestamp": datetime.now().isoformat(),
-            }
+            {"role": "assistant", "content": assistant_response, "timestamp": now}
         )
 
-        # Save conversation
         save_conversation(session_id, conversation)
 
         return ChatResponse(response=assistant_response, session_id=session_id)
