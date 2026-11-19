@@ -1,0 +1,32 @@
+[
+  {
+    "role": "user",
+    "content": "Ol\u00e1!",
+    "timestamp": "2026-11-18T18:55:03.511559"
+  },
+  {
+    "role": "assistant",
+    "content": "Ol\u00e1! Sou SansLiv, a vers\u00e3o digital de Lara Sans. Prazer em falar com voc\u00ea.\n\nSou Desenvolvedora Full Stack e AI Engineer, baseada em Madrid, com mais de 7 anos de experi\u00eancia. Hoje meu foco \u00e9 desenhar e colocar em produ\u00e7\u00e3o solu\u00e7\u00f5es de Intelig\u00eancia Artificial, agentes aut\u00f4nomos e backends avan\u00e7ados, integrando dados complexos.\n\nResumo r\u00e1pido do meu trabalho:\n- Experi\u00eancia em Weblife Dev: desenvolvimento de aplica\u00e7\u00f5es do zero, automa\u00e7\u00f5es com n8n e integra\u00e7\u00e3o de AI Agents para email, gera\u00e7\u00e3o de leads, gest\u00e3o de chatbots e publica\u00e7\u00e3o em redes sociais.\n- Stack: Python (FastAPI, Django), Node.js, Laravel; frontend com React; bancos de dados MySQL e MongoDB.\n- Automa\u00e7\u00e3o e IA: LangChain, LangGraph, Agentic RAG, fine-tuning de LLMs e deployment em produ\u00e7\u00e3o.\n- GIS: conhecimento em QGIS e ArcGIS, com interesse em projetos que conectem dados geoespaciais a solu\u00e7\u00f5es web e IA.\n- Abordagem pr\u00e1tica: foco em entreg\u00e1veis reais, solu\u00e7\u00f5es escal\u00e1veis e boa comunica\u00e7\u00e3o com equipes multidisciplinares.\n\nSe voc\u00ea est\u00e1 buscando parceria para um projeto, posso explorar objetivos, prazos e resultados esperados, al\u00e9m de sugerir arquiteturas de solu\u00e7\u00e3o e milestones. Quer compartilhar qual \u00e9 o desafio ou o tipo de projeto que voc\u00ea tem em mente? Pode me contatar no SantosLiv08@gmail.com ou pelo LinkedIn: https://www.linkedin.com/in/santosliv08/.",
+    "timestamp": "2026-11-18T18:55:03.511567"
+  },
+  {
+    "role": "user",
+    "content": "sou alex.",
+    "timestamp": "2026-11-18T18:55:50.398702"
+  },
+  {
+    "role": "assistant",
+    "content": "Oi Alex! Prazer em conhec\u00ea-lo. Sou SansLiv, a vers\u00e3o digital de Lara Sans. Como posso ajudar hoje?\n\nVoc\u00ea est\u00e1 pensando em um projeto espec\u00edfico? Pode ser:\n\n- Desenvolvimento Full Stack com IA e automa\u00e7\u00f5es\n- Solu\u00e7\u00f5es de AI Engineering (LangChain, agentes, RAG)\n- Automa\u00e7\u00e3o de processos (n8n, integra\u00e7\u00f5es)\n- GIS/Web GIS com dados geoespaciais\n\nSe puder, compartilhe um pouco sobre:\n- Objetivo do projeto e p\u00fablico-alvo\n- Prazos e or\u00e7amento dispon\u00edvel (aproximados)\n- Stack desejada ou restri\u00e7\u00f5es t\u00e9cnicas\n- Dados dispon\u00edveis e integra\u00e7\u00f5es (APIs, bancos de dados, etc.)\n\nCom base nisso, eu posso sugerir arquitetura, milestones e um plano de entregas. Tamb\u00e9m posso indicar exemplos de abordagens que j\u00e1 utilizei com clientes (email/lead automation, chatbots, publica\u00e7\u00e3o em redes, integra\u00e7\u00e3o de IA em backend, etc.).\n\nSe preferir, marcamos uma breve discovery para alinharmos tudo. Meus contatos: SantosLiv08@gmail.com ou LinkedIn: https://www.linkedin.com/in/santosliv08/.",
+    "timestamp": "2026-11-18T18:55:50.398711"
+  },
+  {
+    "role": "user",
+    "content": "qual \u00e9 o meu nome?",
+    "timestamp": "2026-11-18T18:56:21.836154"
+  },
+  {
+    "role": "assistant",
+    "content": "Seu nome \u00e9 Alex. \n\nSe quiser, posso chamar voc\u00ea pelo seu nome durante a conversa. Como posso ajudar hoje? Tem algum projeto em mente ou quer marcar uma discovery r\u00e1pida para alinharmos objetivos, prazos e resultados esperados?",
+    "timestamp": "2026-11-18T18:56:21.836162"
+  }
+]
