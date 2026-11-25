@@ -9,7 +9,7 @@ export default function Home() {
             Lara Santos — AI Digital Twin
           </h1>
           <p className="text-center text-gray-600 mb-8">
-            Ask me anything about my experience, projects, and background
+            Ask me anything about my experience, projects, and background.
           </p>
 
           <div className="h-[600px]">
