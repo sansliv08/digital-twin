@@ -17,7 +17,7 @@ export default function Home() {
           </div>
 
           <footer className="mt-8 text-center text-sm text-gray-500">
-            <p>© {new Date().getFullYear()} Lara Santos · Powered by ME</p>
+            <p>© 2026 Lara Santos · Powered by ME</p>
           </footer>
         </div>
       </div>
